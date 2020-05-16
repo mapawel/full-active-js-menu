@@ -1,0 +1,233 @@
+*, *::before, *::after
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+$col-light-bg: #1b1a1a
+$col-dark-txt: #f0fff8e3
+$col-dark-elements: #2c4166
+$col-acc: #DFC122
+
+html
+    scroll-behavior: smooth
+    font-size: 10px
+
+body
+    min-height: 200vh
+    overflow-x: hidden
+    font-family: 'Baloo 2', cursive
+    color: $col-dark-txt
+    background-color: $col-light-bg
+
+.wrapper
+    position: relative
+    width: 85%
+    max-width: 1200px
+    margin: 0 auto
+
+h1
+    font-size: 3rem
+    text-transform: uppercase
+    letter-spacing: .5rem
+
+p
+    font-size: 1.5rem
+    margin: 2rem 0
+
+.nav-magic-line
+    position: fixed
+    top: -22px
+    left: 0
+    z-index: 1
+    height: 68px
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+    background-color: $col-dark-elements
+    transition: transform .3s
+    .wrapper
+        top: 22px
+        height: 0
+        display: flex
+        flex-direction: column
+    ul
+        display: none
+        width: 50%
+        flex-direction: column
+        align-items: flex-start
+        padding-top: 65px
+    &::before
+        content: ''
+        position: absolute
+        left: 0
+        top: o
+        z-index: 0
+        width: 100%
+        height: 2px
+        background-color: $col-dark-elements
+        transition: transform .3s
+    &::after
+        content: ''
+        position: absolute
+        left: 0
+        bottom: 0
+        z-index: 0
+        width: 100%
+        height: 3px
+        background-color: $col-acc
+        transition: transform .3s
+    .logo
+        position: absolute
+        top: 20px
+        left: 0
+        z-index: 2
+        transform: translateY(-50%)
+        transition: transform .3s
+        p
+            margin: 0
+            font-family: 'Berkshire Swash', cursive
+            text-transform: uppercase
+    .big-logo
+        transform: translate(100%, -100%) scale(3)
+
+.nav-expand
+    &::before
+        transform: scaleY(330)
+    &::after
+        transform: translateY(264px)
+    .wrapper
+        // height: 330px
+    ul
+        display: flex
+
+.nodisplay
+    display: none
+
+.burger
+    position: absolute
+    right: 5vw
+    top: 3px
+    width: 100px
+    height: 60px
+    padding: 20px 10px 0px 55px
+    overflow: hidden
+    background: none
+    border: none
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    cursor: pointer
+    outline: none
+    transition: transform .3s
+    &:focus
+        &::before
+            content: ''
+            position: absolute
+            right: 7px
+            bottom: 2px
+            z-index: -1
+            width: 41px
+            height: 35px
+            border-radius: 5px
+            background-image: linear-gradient(0deg, rgba(223,193,34,.6) 0%, rgba(44,65,102,1) 40%, rgba(44,65,102,1) 60%, rgba(223,193,34,.6) 100%)
+    span
+        width: 50%
+        height: 3px
+        background-color: white
+        transition: transform .4s
+        &:nth-of-type(3), &:nth-of-type(4)
+            margin: 8px 0
+
+.cross
+    #lineA1
+        transform: translateX(-420%)
+    #lineA2
+        transform: translate(-3.5px, 6px) rotate(-45deg) 
+    #lineB1
+        transform: translate(3.5px, -5px) rotate(45deg)
+    #lineB2
+        transform: translate(-3.5px, 5.5px) rotate(45deg) 
+    #lineC1
+        transform: translate(3.5px, -5.5px) rotate(-45deg)
+    #lineC2
+        transform: translateX(170%)
+
+.nav-wide
+    transform: translateY(20px)
+    .burger
+        transform: translateY(-10px)
+
+.magic-line
+    display: none
+    width: 1px
+    height: 3px
+    position: absolute
+    z-index: 1
+    bottom: 0px
+    left: 0
+    background-color: $col-dark-elements
+    transform: translateX(0px) scaleX(100) 
+    transition: transform .4s
+
+li
+    display: block
+    a
+        display: block
+        overflow: hidden
+        position: relative
+        padding: 10px 20px
+        color: $col-dark-txt
+        font-size: 1.5rem
+        font-weight: bold
+        text-transform: uppercase
+        text-decoration: none
+        letter-spacing: .2rem
+        transition: color .5s, transform .4s cubic-bezier(0.99, 0.51, 0.4, 1.27)
+    .hide
+        transform: translateX(-400px)
+    .active
+        color: $col-acc
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            transform: translate(0, -50%) skewX(-70deg)
+            left: -137%
+            width: 120%
+            height: 1.5rem
+            background-color: $col-dark-elements
+            animation: blink 1s
+
+main
+    section
+        position: relative
+        height: 110vh
+        &::before
+            content: ''
+            display: block
+            position: relative
+            height: 58px
+            width: 100%
+            margin-top: -58px
+    #home    
+        .wrapper
+            height: 100vh
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+
+
+
+
+
+@keyframes blink
+    0%
+        transform: translate(0%, -50%) skewX(-70deg)
+    100%
+        transform: translate(237%, -50%) skewX(-70deg)
+        
+            
