@@ -29,11 +29,33 @@ let $windowHeight;
 let $spyActive;
 let $actScrollingPos;
 
-
-
 const main = () => {
     prepareFirstElements();
     prepareEvents();
+}
+
+const getAllMenuElementsY = () => {
+    $allMenuElementsY = [];
+    for (let el = 0; el < $allMenuElementsNames.length; el++) {
+        let temporaryName;
+        temporaryName = document.getElementById($allMenuElementsNames[el]).getBoundingClientRect().y + window.scrollY;
+        $allMenuElementsY.push(temporaryName);
+    }
+}
+
+const prepareFirstElements = () => {
+    $menuList = document.querySelector('.nav-magic-line ul');
+    $activeElement = document.querySelector('.active');
+    $magicLine = document.querySelector('.magic-line');
+    $logo = document.querySelector('.logo');
+    $burger = document.querySelector('.burger');
+    $nav = document.querySelector('.nav-magic-line');
+    $allMenuElements = document.querySelectorAll('.menu-element');
+    $allMenuElements.forEach((el) => $allMenuElementsNames.push(el.getAttribute('href').slice(1)));
+    getAllMenuElementsY();
+    getWindowHeight();
+    $spyActive = 1;
+    startMagicLine();
 }
 
 const scrollSpy = () => {
@@ -63,29 +85,6 @@ const scrollSpy = () => {
 
 const getWindowHeight = () => {
     $windowHeight = window.innerHeight;
-}
-
-const getAllMenuElementsY = () => {
-    $allMenuElementsY = [];
-    for (let el = 0; el < $allMenuElementsNames.length; el++) {
-        let temporaryName;
-        temporaryName = document.getElementById($allMenuElementsNames[el]).getBoundingClientRect().y + window.scrollY;
-        $allMenuElementsY.push(temporaryName);
-    }
-}
-
-const prepareFirstElements = () => {
-    $menuList = document.querySelector('.nav-magic-line ul');
-    $activeElement = document.querySelector('.active');
-    $magicLine = document.querySelector('.magic-line');
-    $logo = document.querySelector('.logo');
-    $burger = document.querySelector('.burger');
-    $nav = document.querySelector('.nav-magic-line');
-    $allMenuElements = document.querySelectorAll('.menu-element');
-    $allMenuElements.forEach((el) => $allMenuElementsNames.push(el.getAttribute('href').slice(1)));
-    getAllMenuElementsY();
-    getWindowHeight();
-    $spyActive = 1;
 }
 
 const prepareEvents = () => {
@@ -155,12 +154,15 @@ const delayCloseExpand = () => {
 }
 
 const startMagicLine = () => {
-    $activeElementLPadding = window.getComputedStyle($activeElement).getPropertyValue('padding-left').replace('px', '') * 1;
-    $activeElementRpadding = window.getComputedStyle($activeElement).getPropertyValue('padding-right').replace('px', '') * 1;
-    $activeElementWidth = $activeElement.getBoundingClientRect().width - $activeElementLPadding - $activeElementRpadding
-    $activeElementXpos = $activeElement.getBoundingClientRect().x;
-    $magicLine.style.transition = 'transform 0s';
-    $magicLine.style.transform = `translateX(${$activeElementXpos + $activeElementWidth/2 + $activeElementLPadding}px) scaleX(${$activeElementWidth})`;
+    setTimeout(() => {
+        $activeElementLPadding = window.getComputedStyle($activeElement).getPropertyValue('padding-left').replace('px', '') * 1;
+        $activeElementRpadding = window.getComputedStyle($activeElement).getPropertyValue('padding-right').replace('px', '') * 1;
+        $activeElementWidth = $activeElement.getBoundingClientRect().width - $activeElementLPadding - $activeElementRpadding
+        $activeElementXpos = $activeElement.getBoundingClientRect().x;
+        $magicLine.style.transition = 'transform 0s';
+        $magicLine.style.transform = `translateX(${$activeElementXpos + $activeElementWidth/2 + $activeElementLPadding}px) scaleX(${$activeElementWidth})`;
+    }, 50)
+
 }
 
 const moveMagicLine = (hover) => {
@@ -213,5 +215,4 @@ const checkMove = () => {
 
 window.addEventListener('DOMContentLoaded', () => {
     main();
-    startMagicLine();
 })

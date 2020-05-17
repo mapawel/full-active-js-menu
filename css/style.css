@@ -165,26 +165,17 @@ p {
 .burger {
   position: absolute;
   right: 5vw;
-  top: 3px;
+  top: 5px;
   width: 100px;
   height: 60px;
   padding: 20px 10px 0px 55px;
   overflow: hidden;
   background: none;
   border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   cursor: pointer;
   outline: none;
+  -webkit-transform: translateY(0) scale(0.7);
+          transform: translateY(0) scale(0.7);
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
   transition: transform .3s;
@@ -194,18 +185,19 @@ p {
 .burger:focus::before {
   content: '';
   position: absolute;
-  right: 7px;
-  bottom: 2px;
+  right: 5%;
+  bottom: 0;
   z-index: -1;
-  width: 41px;
-  height: 35px;
+  width: 40%;
+  height: 50%;
   border-radius: 5px;
   background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(223, 193, 34, 0.6)), color-stop(40%, #2c4166), color-stop(60%, #2c4166), to(rgba(223, 193, 34, 0.6)));
   background-image: linear-gradient(0deg, rgba(223, 193, 34, 0.6) 0%, #2c4166 40%, #2c4166 60%, rgba(223, 193, 34, 0.6) 100%);
 }
 
 .burger span {
-  width: 50%;
+  position: absolute;
+  width: 15%;
   height: 3px;
   background-color: white;
   -webkit-transition: -webkit-transform .4s;
@@ -214,36 +206,69 @@ p {
   transition: transform .4s, -webkit-transform .4s;
 }
 
-.burger span:nth-of-type(3), .burger span:nth-of-type(4) {
-  margin: 8px 0;
+.burger span#lineA1 {
+  bottom: 44%;
+  right: 25%;
+  opacity: 1;
+  -webkit-transition: opacity .4s, -webkit-transform .4s;
+  transition: opacity .4s, -webkit-transform .4s;
+  transition: transform .4s, opacity .4s;
+  transition: transform .4s, opacity .4s, -webkit-transform .4s;
 }
 
-.cross #lineA1 {
+.burger span#lineA2 {
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  bottom: 44%;
+  right: 10%;
+}
+
+.burger span#lineB {
+  width: 30%;
+  bottom: 24%;
+  right: 10%;
+}
+
+.burger span#lineC1 {
+  bottom: 4%;
+  right: 25%;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.burger span#lineC2 {
+  bottom: 4%;
+  right: 10%;
+  opacity: 1;
+  -webkit-transition: opacity .4s, -webkit-transform .4s;
+  transition: opacity .4s, -webkit-transform .4s;
+  transition: transform .4s, opacity .4s;
+  transition: transform .4s, opacity .4s, -webkit-transform .4s;
+}
+
+.cross span#lineA1 {
+  opacity: 0;
   -webkit-transform: translateX(-420%);
           transform: translateX(-420%);
 }
 
-.cross #lineA2 {
-  -webkit-transform: translate(-3.5px, 6px) rotate(-45deg);
-          transform: translate(-3.5px, 6px) rotate(-45deg);
+.cross span#lineA2 {
+  -webkit-transform: translate(-36%, 60%) rotate(-45deg);
+          transform: translate(-36%, 60%) rotate(-45deg);
 }
 
-.cross #lineB1 {
-  -webkit-transform: translate(3.5px, -5px) rotate(45deg);
-          transform: translate(3.5px, -5px) rotate(45deg);
+.cross span#lineB {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
-.cross #lineB2 {
-  -webkit-transform: translate(-3.5px, 5.5px) rotate(45deg);
-          transform: translate(-3.5px, 5.5px) rotate(45deg);
+.cross span#lineC1 {
+  -webkit-transform: translate(36%, -60%) rotate(-45deg);
+          transform: translate(36%, -60%) rotate(-45deg);
 }
 
-.cross #lineC1 {
-  -webkit-transform: translate(3.5px, -5.5px) rotate(-45deg);
-          transform: translate(3.5px, -5.5px) rotate(-45deg);
-}
-
-.cross #lineC2 {
+.cross span#lineC2 {
+  opacity: 0;
   -webkit-transform: translateX(170%);
           transform: translateX(170%);
 }
@@ -254,8 +279,8 @@ p {
 }
 
 .nav-wide .burger {
-  -webkit-transform: translateY(-10px);
-          transform: translateY(-10px);
+  -webkit-transform: translateY(-20%) scale(1);
+          transform: translateY(-20%) scale(1);
 }
 
 .magic-line {

@@ -108,57 +108,76 @@ p
 .burger
     position: absolute
     right: 5vw
-    top: 3px
+    top: 5px
     width: 100px
     height: 60px
     padding: 20px 10px 0px 55px
     overflow: hidden
     background: none
     border: none
-    display: flex
-    justify-content: center
-    align-items: center
-    flex-wrap: wrap
     cursor: pointer
     outline: none
+    transform: translateY(0) scale(0.7)
     transition: transform .3s
     &:focus
         &::before
             content: ''
             position: absolute
-            right: 7px
-            bottom: 2px
+            right: 5%
+            bottom: 0
             z-index: -1
-            width: 41px
-            height: 35px
+            width: 40%
+            height: 50%
             border-radius: 5px
             background-image: linear-gradient(0deg, rgba(223,193,34,.6) 0%, rgba(44,65,102,1) 40%, rgba(44,65,102,1) 60%, rgba(223,193,34,.6) 100%)
     span
-        width: 50%
+        position: absolute
+        width: 15%
         height: 3px
         background-color: white
         transition: transform .4s
-        &:nth-of-type(3), &:nth-of-type(4)
-            margin: 8px 0
+        &#lineA1
+            bottom: 44%
+            right: 25%
+            opacity: 1
+            transition: transform .4s, opacity .4s
+        &#lineA2
+            transform-origin: top right
+            bottom: 44%
+            right: 10%
+        &#lineB
+            width: 30%
+            bottom: 24%
+            right: 10%
+        &#lineC1
+            bottom: 4%
+            right: 25%
+            transform-origin: bottom left
+        &#lineC2
+            bottom: 4%
+            right: 10%
+            opacity: 1
+            transition: transform .4s, opacity .4s
 
 .cross
-    #lineA1
-        transform: translateX(-420%)
-    #lineA2
-        transform: translate(-3.5px, 6px) rotate(-45deg) 
-    #lineB1
-        transform: translate(3.5px, -5px) rotate(45deg)
-    #lineB2
-        transform: translate(-3.5px, 5.5px) rotate(45deg) 
-    #lineC1
-        transform: translate(3.5px, -5.5px) rotate(-45deg)
-    #lineC2
-        transform: translateX(170%)
+    span
+        &#lineA1
+            opacity: 0
+            transform: translateX(-420%)
+        &#lineA2
+            transform: translate(-36%, 60%) rotate(-45deg) 
+        &#lineB
+            transform: rotate(45deg)
+        &#lineC1
+            transform: translate(36%, -60%) rotate(-45deg)
+        &#lineC2
+            opacity: 0
+            transform: translateX(170%)
 
 .nav-wide
     transform: translateY(20px)
     .burger
-        transform: translateY(-10px)
+        transform: translateY(-20%) scale(1)
 
 .magic-line
     display: none
